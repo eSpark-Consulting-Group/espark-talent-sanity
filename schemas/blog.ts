@@ -6,6 +6,21 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'bannerImage',
+      title: 'Banner Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'bannerTitle',
+      title: 'Banner Title',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'featureImage',
       title: 'Feature Image',
       type: 'image',
