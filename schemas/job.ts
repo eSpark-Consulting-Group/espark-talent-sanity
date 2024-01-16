@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import { Rule } from 'sanity'
 
 export default {
   name: 'job',
@@ -10,6 +10,16 @@ export default {
       type: 'string',
       title: 'Title',
       validation: (Rule: Rule) => Rule.required().min(10).max(80),
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',
@@ -42,9 +52,9 @@ export default {
       initialValue: 'on-site',
       options: {
         list: [
-          {title: 'Remote', value: 'remote'},
-          {title: 'Onsite', value: 'on-site'},
-          {title: 'Hybrid', value: 'hybrid'},
+          { title: 'Remote', value: 'remote' },
+          { title: 'Onsite', value: 'on-site' },
+          { title: 'Hybrid', value: 'hybrid' },
         ],
       },
     },
@@ -55,11 +65,11 @@ export default {
       initialValue: 'full-time',
       options: {
         list: [
-          {title: 'Full Time', value: 'full-time'},
-          {title: 'Part Time', value: 'part-time'},
-          {title: 'Internship', value: 'internship'},
-          {title: 'Flexible', value: 'flexible'},
-          {title: 'Contract', value: 'contract'},
+          { title: 'Full Time', value: 'full-time' },
+          { title: 'Part Time', value: 'part-time' },
+          { title: 'Internship', value: 'internship' },
+          { title: 'Flexible', value: 'flexible' },
+          { title: 'Contract', value: 'contract' },
         ],
       },
     },
@@ -70,12 +80,12 @@ export default {
       initialValue: '0-1',
       options: {
         list: [
-          {title: '0-1 years', value: '0-1'},
-          {title: '1-2 years', value: '1-2'},
-          {title: '2-3 years', value: '2-3'},
-          {title: '3-4 years', value: '3-4'},
-          {title: '4-5 years', value: '4-5'},
-          {title: '5+ years', value: '5+'},
+          { title: '0-1 years', value: '0-1' },
+          { title: '1-2 years', value: '1-2' },
+          { title: '2-3 years', value: '2-3' },
+          { title: '3-4 years', value: '3-4' },
+          { title: '4-5 years', value: '4-5' },
+          { title: '5+ years', value: '5+' },
         ],
       },
     },
@@ -83,7 +93,7 @@ export default {
       name: 'jobCategory',
       type: 'reference',
       title: 'Job Category',
-      to: [{type: 'jobCategory'}],
+      to: [{ type: 'jobCategory' }],
       validation: (Rule: Rule) => Rule.required(),
     },
   ],
