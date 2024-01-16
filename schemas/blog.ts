@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import { Rule } from 'sanity'
 
 export default {
   name: 'blog',
@@ -45,7 +45,7 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{type: 'author'}],
+      to: [{ type: 'author' }],
       validation: (Rule: Rule) => Rule.required(),
     },
     {
@@ -58,14 +58,14 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
       validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       options: {
         layout: 'tags',
       },
