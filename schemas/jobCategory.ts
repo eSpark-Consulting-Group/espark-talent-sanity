@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import { Rule } from 'sanity'
 
 export default {
   name: 'jobCategory',
@@ -10,6 +10,16 @@ export default {
       type: 'string',
       title: 'Title',
       validation: (Rule: Rule) => Rule.required().min(10).max(80),
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: (Rule: Rule) => Rule.required(),
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
     },
   ],
 }

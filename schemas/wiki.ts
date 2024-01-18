@@ -6,6 +6,13 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'id',
+      title: 'ID',
+      type: 'number',
+      description: 'Enter the  id of the wiki (for Sorting)',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
