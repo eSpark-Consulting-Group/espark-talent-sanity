@@ -89,12 +89,5 @@ export default {
                 ],
             },
         },
-        {
-            name: 'jobCategory',
-            type: 'reference',
-            title: 'Job Category',
-            to: [{ type: 'jobCategory' }],
-            validation: (Rule: Rule) => Rule.required(),
-        },
     ],
 }
