@@ -6,6 +6,16 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: (Rule: Rule) => Rule.required(),
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
+    {
       name: 'bannerImage',
       title: 'Banner Image',
       type: 'image',
@@ -28,6 +38,13 @@ export default {
         hotspot: true,
       },
       validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'imageAlt',
+      title: 'Hero Image Alt',
+      type: 'string',
+      description: 'Enter the title of the wiki (3 characters minimum)',
+      validation: (Rule: Rule) => Rule.required().min(3),
     },
     {
       name: 'title',
@@ -71,15 +88,44 @@ export default {
       },
       validation: (Rule: Rule) => Rule.required(),
     },
+    // SEO Details
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      validation: (Rule: Rule) => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      title: 'SEO Details',
+      name: 'seo',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          title: 'SEO Title',
+          description: 'Enter the SEO title',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'description',
+          type: 'string',
+          title: 'SEO Description',
+          description: 'Enter the SEO description',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'url',
+          type: 'string',
+          title: 'SEO URL',
+          description: 'Enter the SEO URL',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'image',
+          title: 'SEO Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          description: 'Select an image for SEO',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
     },
   ],
 }
