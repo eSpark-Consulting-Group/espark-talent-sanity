@@ -9,27 +9,28 @@ export default {
       name: 'id',
       title: 'ID',
       type: 'number',
-      description: 'Enter the  id of the wiki (for Sorting)',
+      description: 'Enter the ID of the wiki (for Sorting)',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'title',
       title: 'Title',
       type: 'string',
-      description: 'Enter the  title of the wiki (3 characters minimum)',
+      description: 'Enter the title of the wiki (3 characters minimum)',
       validation: (Rule: Rule) => Rule.required().min(3),
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Generate or edit the  slug of the wiki (3 characters minimum)',
+      description: 'Generate or edit the slug of the wiki (3 characters minimum)',
       validation: (Rule: Rule) => Rule.required(),
       options: {
         source: 'title',
         maxLength: 150,
       },
-    }, {
+    },
+    {
       name: 'shortDescription',
       title: 'Short Description',
       type: 'string',
@@ -43,7 +44,7 @@ export default {
       options: {
         hotspot: true,
       },
-      description: 'import the hero image of the wiki (approx. 400*400 )',
+      description: 'Import the hero image of the wiki (approx. 400*400)',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
@@ -53,22 +54,14 @@ export default {
       options: {
         hotspot: true,
       },
-      description: 'import the hero image of the wiki (approx. 40*40 )',
+      description: 'Import the icon image of the wiki (approx. 40*40)',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'salary',
       title: 'Salary',
       type: 'number',
-      description: 'Enter the salary of the wiki (in USDs. e.g. 5000 )',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      name: 'wikiCategory',
-      type: 'reference',
-      title: 'Wiki Category',
-      to: [{ type: 'wikiCategory' }],
-      description: 'Selct or Create the category of the wiki',
+      description: 'Enter the salary of the wiki (in USDs, e.g. 5000)',
       validation: (Rule: Rule) => Rule.required(),
     },
     {
@@ -79,6 +72,51 @@ export default {
       description: 'Enter the Content of the wiki',
       validation: (Rule: Rule) => Rule.required(),
     },
-
+    {
+      name: 'wikiCategory',
+      title: 'Wiki Category',
+      type: 'string',
+      description: 'Enter the category of the Wiki (10-80 characters)',
+      validation: (Rule: Rule) => Rule.required().max(150),
+    },
+    // SEO Details
+    {
+      title: 'SEO Details',
+      name: 'seo',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          title: 'SEO Title',
+          description: 'Enter the SEO title',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'description',
+          type: 'string',
+          title: 'SEO Description',
+          description: 'Enter the SEO description',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'url',
+          type: 'string',
+          title: 'SEO URL',
+          description: 'Enter the SEO URL',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+        {
+          name: 'image',
+          title: 'SEO Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          description: 'Select an image for SEO',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
+    },
   ],
 }
