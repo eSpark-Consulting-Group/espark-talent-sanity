@@ -86,16 +86,16 @@ export default {
       type: 'object',
       fields: [
         {
-          name: 'title',
+          name: 'metaTitle',
           type: 'string',
-          title: 'SEO Title',
+          title: 'Meta Title',
           description: 'Enter the SEO title',
           validation: (Rule: Rule) => Rule.required(),
         },
         {
-          name: 'description',
+          name: 'metaDescription',
           type: 'string',
-          title: 'SEO Description',
+          title: 'Meta Description',
           description: 'Enter the SEO description',
           validation: (Rule: Rule) => Rule.required(),
         },
@@ -107,8 +107,8 @@ export default {
           validation: (Rule: Rule) => Rule.required(),
         },
         {
-          name: 'image',
-          title: 'SEO Image',
+          name: 'metaImage',
+          title: 'Meta Image',
           type: 'image',
           options: {
             hotspot: true,
