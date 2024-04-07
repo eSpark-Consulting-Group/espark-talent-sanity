@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import { Rule } from 'sanity'
 
 export default {
   name: 'author',
@@ -30,7 +30,7 @@ export default {
       name: 'about',
       title: 'About',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
     },
     {
       name: 'role',
