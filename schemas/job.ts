@@ -40,12 +40,6 @@ export default {
             validation: (Rule: Rule) => Rule.required(),
         },
         {
-            name: 'applyLink',
-            type: 'url',
-            title: 'Apply Link',
-            validation: (Rule: Rule) => Rule.required(),
-        },
-        {
             name: 'jobType',
             type: 'string',
             title: 'Job Type',
