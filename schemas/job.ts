@@ -6,6 +6,13 @@ export default {
     title: 'Job',
     fields: [
         {
+            name: 'id',
+            title: 'ID',
+            type: 'number',
+            description: 'Enter the ID of the wiki (for Sorting)',
+            validation: (Rule: Rule) => Rule.required(),
+        },
+        {
             name: 'title',
             type: 'string',
             title: 'Title',
