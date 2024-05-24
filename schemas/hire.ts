@@ -61,12 +61,50 @@ export default {
                     title: 'Meta Image',
                     type: 'image',
                     options: {
-                        hotspot: true,
+                hotspot: true,
                     },
                     description: 'Select an image for SEO',
                     validation: (Rule: Rule) => Rule.required(),
                 },
             ],
+        },
+        // Rating Data
+        {
+            title: 'Rating Data',
+            name: 'rating',
+            type: 'object',
+            fields: [
+                {
+                    name: 'name',
+                    type: 'string',
+                    title: 'Name'
+                },
+                {
+                    name: 'image',
+                    type: 'image',
+                    title: 'Image'
+                },
+                {
+                    name: 'ratingValue',
+                    type: 'number',
+                    title: 'Rating Value'
+                },
+                {
+                    name: 'bestRating',
+                    type: 'number',
+                    title: 'Best Rating'
+                },
+                {
+                    name: 'worstRating',
+                    type: 'number',
+                    title: 'Worst Rating'
+                },
+                {
+                    name: 'ratingCount',
+                    type: 'number',
+                    title: 'Rating Count'
+                }
+            ]
         },
     ],
 }
