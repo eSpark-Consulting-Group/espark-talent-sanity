@@ -1,4 +1,4 @@
-import { Rule } from 'sanity'
+import {Rule} from 'sanity'
 
 export default {
   name: 'wiki',
@@ -65,10 +65,78 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      name: 'avgSalary',
+      title: 'Average Salary',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'name',
+              title: 'Role Name',
+              type: 'string',
+              description: 'Enter a role name (e.g., Junior, Mid, Senior, or custom)',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'salary',
+              title: 'Salary Range',
+              type: 'object',
+              fields: [
+                {
+                  name: 'from',
+                  title: 'From',
+                  type: 'number',
+                  validation: (Rule: Rule) => Rule.required().min(0),
+                },
+                {
+                  name: 'to',
+                  title: 'To',
+                  type: 'number',
+                  validation: (Rule: Rule) =>
+                    Rule.required().min(0).greaterThan(Rule.valueOfField('from')),
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              from: 'salary.from',
+              to: 'salary.to',
+            },
+            prepare({title, from, to}: {title: string; from: number; to: number}) {
+              return {
+                title: `${title} Role`,
+                subtitle: `Salary: $${from.toLocaleString()} - $${to.toLocaleString()}`,
+              }
+            },
+          },
+        },
+      ],
+      initialValue: [
+        {name: 'junior', salary: {from: 0, to: 0}},
+        {name: 'mid', salary: {from: 0, to: 0}},
+        {name: 'senior', salary: {from: 0, to: 0}},
+      ],
+      validation: (Rule: Rule) =>
+        Rule.required().custom((items: {name: string; salary: {from: number; to: number}}[]) => {
+          if (!items || items.length === 0) return 'At least one salary entry is required.'
+          for (const item of items) {
+            if (item.salary?.from === undefined || item.salary?.to === undefined)
+              return 'Each role must have a salary range.'
+            if (item.salary.from >= item.salary.to)
+              return 'Salary "to" must be greater than "from".'
+          }
+          return true
+        }),
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{type: 'block'}],
       description: 'Enter the Content of the wiki',
       validation: (Rule: Rule) => Rule.required(),
     },
