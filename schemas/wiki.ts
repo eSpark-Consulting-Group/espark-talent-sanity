@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import { Rule } from 'sanity'
 
 export default {
   name: 'wiki',
@@ -106,7 +106,7 @@ export default {
               from: 'salary.from',
               to: 'salary.to',
             },
-            prepare({title, from, to}: {title: string; from: number; to: number}) {
+            prepare({ title, from, to }: { title: string; from: number; to: number }) {
               return {
                 title: `${title} Role`,
                 subtitle: `Salary: $${from.toLocaleString()} - $${to.toLocaleString()}`,
@@ -116,12 +116,12 @@ export default {
         },
       ],
       initialValue: [
-        {name: 'junior', salary: {from: 0, to: 0}},
-        {name: 'mid', salary: {from: 0, to: 0}},
-        {name: 'senior', salary: {from: 0, to: 0}},
+        { name: 'junior', salary: { from: 0, to: 0 } },
+        { name: 'mid', salary: { from: 0, to: 0 } },
+        { name: 'senior', salary: { from: 0, to: 0 } },
       ],
       validation: (Rule: Rule) =>
-        Rule.required().custom((items: {name: string; salary: {from: number; to: number}}[]) => {
+        Rule.required().custom((items: { name: string; salary: { from: number; to: number } }[]) => {
           if (!items || items.length === 0) return 'At least one salary entry is required.'
           for (const item of items) {
             if (item.salary?.from === undefined || item.salary?.to === undefined)
@@ -136,7 +136,7 @@ export default {
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
       description: 'Enter the Content of the wiki',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -198,6 +198,24 @@ export default {
           description: 'Set whether search engines should follow links on this page',
           validation: (Rule: Rule) => Rule.required(),
         },
+        {
+          name: 'jsonLd',
+          initialValue: '{}',
+          title: 'JSON-LD Structured Data',
+          type: 'text',
+          description: 'Paste your JSON-LD schema here. It should be valid JSON.',
+          validation: (Rule: Rule) =>
+            Rule
+              .custom((json: string) => {
+                try {
+                  JSON.parse(json);
+                  return true;
+                } catch (err) {
+                  return 'Invalid JSON format';
+                }
+              }
+              ),
+        }
       ],
     },
   ],
