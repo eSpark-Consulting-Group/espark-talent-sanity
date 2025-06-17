@@ -90,5 +90,23 @@ export default {
                 ],
             },
         },
+        {
+            name: 'jsonLd',
+            initialValue: '{}',
+            title: 'JSON-LD Structured Data',
+            type: 'text',
+            description: 'Paste your JSON-LD schema here. It should be valid JSON.',
+            validation: (Rule: Rule) =>
+                Rule
+                    .custom((json: string) => {
+                        try {
+                            JSON.parse(json);
+                            return true;
+                        } catch (err) {
+                            return 'Invalid JSON format';
+                        }
+                    }
+                ),
+        }
     ],
 }
