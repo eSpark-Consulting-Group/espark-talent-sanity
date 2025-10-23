@@ -31,6 +31,13 @@ export default {
       },
     },
     {
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      description: 'Enter the heading of the wiki (3 characters minimum)',
+      // validation: (Rule: Rule) => Rule.required().min(3),
+    },
+    {
       name: 'shortDescription',
       title: 'Short Description',
       type: 'string',
@@ -46,6 +53,13 @@ export default {
       },
       description: 'Import the hero image of the wiki (approx. 400*400)',
       validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'heroImageAlt',
+      title: 'Hero Image Alt Text',
+      type: 'string',
+      description: 'Enter the hero image alt tag of the wiki (3 characters minimum)',
+      // validation: (Rule: Rule) => Rule.required().min(3),
     },
     {
       name: 'iconImage',
