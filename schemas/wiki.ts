@@ -192,6 +192,12 @@ export default {
           validation: (Rule: Rule) => Rule.required(),
         },
         {
+          name: 'metaKeywords',
+          type: 'string',
+          title: 'Meta Keywords',
+          description: 'Enter the SEO description',
+        },
+        {
           name: 'url',
           type: 'string',
           title: 'SEO URL',

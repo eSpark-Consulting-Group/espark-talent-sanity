@@ -1,4 +1,4 @@
-import { Rule } from 'sanity'
+import {Rule} from 'sanity'
 
 export default {
   name: 'seo',
@@ -28,6 +28,12 @@ export default {
       title: 'Meta Description',
       description: 'Enter the SEO description',
       validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'metaKeywords',
+      type: 'string',
+      title: 'Meta Keywords',
+      description: 'Enter the SEO description',
     },
     {
       name: 'url',
@@ -67,15 +73,14 @@ export default {
       type: 'text',
       description: 'Paste your JSON-LD schema here. It should be valid JSON.',
       validation: (Rule: Rule) =>
-        Rule
-          .custom((json: string) => {
-            try {
-              JSON.parse(json);
-              return true;
-            } catch (err) {
-              return 'Invalid JSON format';
-            }
-          }),
-    }
+        Rule.custom((json: string) => {
+          try {
+            JSON.parse(json)
+            return true
+          } catch (err) {
+            return 'Invalid JSON format'
+          }
+        }),
+    },
   ],
 }
