@@ -215,6 +215,12 @@ export default {
           validation: (Rule: Rule) => Rule.required(),
         },
         {
+          name: 'author',
+          title: 'Author',
+          type: 'reference',
+          to: [{type: 'author'}],
+        },
+        {
           name: 'index',
           title: 'Index',
           type: 'boolean',
